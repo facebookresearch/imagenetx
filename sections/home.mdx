@@ -1,0 +1,113 @@
+---
+title: "ImageNet-X"
+order: 0
+---
+
+<Content color="indigo-200" spaceTop>
+
+# `ImageNet-X`
+
+### Understanding model mistakes with human annotations of ImageNet.
+
+`ImageNet-X` is a set of human annotations pinpointing failure types for the popular ImageNet dataset. ImageNet-X labels distinguishing object factors such as pose, size, color, lighting, occlusions, co-occurences, etc. for each image in the validation set and
+a random subset of 12,000 training samples.
+
+<Button url="/home" color="purple-800" small>
+Paper
+</Button>
+
+
+</Content>
+
+<Gallery color="white" fullWidth>
+  <Image url="/assets/images/cows_edited.png" />
+</Gallery>
+
+<Content spaceBottom>
+
+## Annotation Form
+
+<Image
+  url="/assets/images/annotation_form.png"
+  caption="ImageNet-X Annotation Form"
+/>
+
+</Content>
+
+<Content noteLeft="ImageNet-X can be used to surface mistake types for any ImageNet classifier" spaceBottom>
+
+## Using ImageNet-X
+
+1. Git clone our repo
+
+```
+git clone url
+```
+
+2. Run plot.py
+3. [step]
+
+[add collab link]
+
+Example [robustness by metaclass dashboard for ViT](/site/assets/ViT_dashboard.html)
+
+To evaluate mistake types for a new model, see below.
+
+</Content>
+
+<Content spaceBottom>
+
+## Research abstract
+
+Deep learning vision systems are widely deployed across applications where reliability is critical.
+However, even today’s best models can fail to recognize an object when its pose, lighting, or background varies.
+While existing benchmarks surface examples that are challenging for models, they do not explain why such mistakes arise.
+
+To address this need, we introduce ImageNet-X–a set of sixteen human annotations of factors such as pose, background, or lighting for the entire ImageNet1k validation set as well as a random subset of 12k training images.
+Equipped with ImageNet-X, we investigate 2,200 current recognition models and study the types of mistakes as a function of model’s
+(1) architecture – e.g. transformer vs. convolutional –, (2) learning paradigm – e.g. supervised vs. self-supervised –, and (3) training procedures – e.g. data augmentation.
+
+Regardless of these choices, we find models have consistent failure modes across ImageNet-X categories.
+We also find that while data augmentation can improve robustness to certain factors, they induce spill-over effects to other factors.
+For example, color-jitter augmentation improves robustness to color and brightness, but surprisingly hurts robustness to pose.
+Together, these insights suggests that to advance the robustness of modern vision models, future research should focus on collecting additional diverse data and understanding data augmentation schemes.
+Along with these insights, we release a toolkit based on ImageNet-X to spur further study into the mistakes the image recognition systems make
+
+</Content>
+
+<Content color="red-100" spaceTop spaceBottom>
+
+## Read the paper
+
+<Button url="/home" color="purple-800" small>
+Paper
+</Button>
+
+</Content>
+
+<Content spaceTop spaceBottom>
+
+
+## Using ImageNet-X for a new model
+
+See README on how to measure the mistake types on ImageNet
+
+When you are ready to go live, run this command in the terminal to create a production build.
+
+```
+pip install [something]
+```
+
+Take a look at the [**Release Checklist**](./release) section for deployment tips.
+
+</Content>
+
+<Footer columns>
+  <div>
+  ImageNet-X
+  </div>
+
+  <div>
+  [Github repo](https://github.com/fairinternal/image-variation-categories)  
+  </div>
+</Footer>

@@ -1,0 +1,18 @@
+{
+  "title": "ImageNet-X",
+  "logo": "logo.png",
+  "description": "",
+  "showHomeLink": true,
+  "thumbnail": "/assets/thumbnail.png",
+  "theme": "indigo",
+  "shade": 800,
+  "paper": "white",
+  "footerBackground": "slate-200",
+  "footerText": "slate-600",
+  "rightNav": [
+    {
+      "title": "Github",
+      "url": "https://github.com/fairinternal/image-variation-categories"
+    }
+  ]
+}

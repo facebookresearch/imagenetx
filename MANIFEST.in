@@ -1,3 +1,0 @@
-include imagenet_x/annotations/*.jsonl
-include imagenet_x/annotations/*.csv
-include imagenet_x/annotations/*.txt

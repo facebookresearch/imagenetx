@@ -1,3 +1,10 @@
+"""
+Copyright (c) Meta Platforms, Inc. and affiliates.
+All rights reserved.
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+"""
+
 from imagenet_x import load_annotations, get_factor_accuracies, FACTORS
 
 def test_load_annotations():

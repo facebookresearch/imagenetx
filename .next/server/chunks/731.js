@@ -174,12 +174,12 @@ __webpack_async_result__();
  *
  * You can also access the current base path via process.env.basePath
  */ function assetLoader({ src  }) {
-    return `${"/undefined"}/assets/${src}`;
+    return `${"/site"}/assets/${src}`;
 }
 function getBasePath(src) {
     // When basePath is "", Next.js automatically prepend "/" but not when basePath is "/xyz".
     // Here we account for this condition
-    return  false ? 0 : `${"/undefined"}${src}`;
+    return  false ? 0 : `${"/site"}${src}`;
 }
 
 

@@ -43,7 +43,7 @@ function Home({ sectionMetaData  }) {
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_head__WEBPACK_IMPORTED_MODULE_1___default()), {
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                     "http-equiv": "refresh",
-                    content: `0; url=${"/undefined"}/home`
+                    content: `0; url=${"/site"}/home`
                 })
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {

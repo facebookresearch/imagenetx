@@ -1,0 +1,8 @@
+pandas>=1.4.3
+numpy>=1.23.0
+matplotlib>=3.5.2
+plotly>=5.9.0
+kaleido>=0.2.1
+tabulate>=0.8.10
+seaborn>=0.11.2
+scipy>=1.7.0

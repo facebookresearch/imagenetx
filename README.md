@@ -137,3 +137,7 @@ python -m imagenet_x plots [--use-tex]
 ```bash
 python -m imagenet_x aggregate --model-dirs path/to/model/predictions 
 ```
+
+## License
+
+License file in root of directory.

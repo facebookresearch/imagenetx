@@ -188,7 +188,7 @@ function getBasePath(src) {
 /***/ 5272:
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"title":"ImageNet-X","logo":"logo.png","description":"","showHomeLink":true,"thumbnail":"/assets/thumbnail.png","theme":"indigo","shade":800,"paper":"white","footerBackground":"slate-200","footerText":"slate-600","rightNav":[{"title":"Github","url":"https://github.com/facebookresearch"}]}');
+module.exports = JSON.parse('{"title":"ImageNet-X","logo":"logo.png","description":"","showHomeLink":true,"thumbnail":"/assets/thumbnail.png","theme":"indigo","shade":800,"paper":"white","footerBackground":"slate-200","footerText":"slate-600","rightNav":[{"title":"Github","url":"https://github.com/facebookresearch/imagenetx/"}]}');
 
 /***/ })
 

@@ -1496,7 +1496,7 @@ function _interopRequireWildcard(obj) {
 }
 let detectDomainLocale;
 if (false) {}
-const basePath = "/site" || 0;
+const basePath = "/imagenetx/site" || 0;
 function buildCancellationError() {
     return Object.assign(new Error('Route Cancelled'), {
         cancelled: true

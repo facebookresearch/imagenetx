@@ -3,7 +3,7 @@ title: "ImageNet-X"
 order: 0
 ---
 
-<Content color="indigo-200" spaceTop>
+<Content color="indigo-200" spaceTop spaceBottom>
 
 # `ImageNet-X`
 
@@ -17,49 +17,37 @@ Paper
 </Button> 
 
 <Button url="https://github.com/facebookresearch/imagenetx/" color="purple-800" small style={{marginRight: '5px'}}>
-Annotations
-</Button>  
-
-<Button url="https://github.com/facebookresearch/imagenetx/" color="purple-800" small style={{marginRight: '5px'}}>
 GitHub
 </Button>
 
+<Button url="https://colab.research.google.com/drive/1snegwqRKjqjwBEyq0-YY9_NOmTai8hT_?usp=sharing" color="purple-800" small style={{marginRight: '5px'}}>
+Colab Notebook
+</Button>
 
 </Content>
 
 <Gallery color="white" fullWidth>
-  <Image url="/assets/images/cows_edited.png" />
+  <Image url="/assets/images/landing.png" />
 </Gallery>
-
-<Content spaceBottom>
-
-## Annotation Form
-
-<Image
-  url="/assets/images/annotation_form.png"
-  caption="ImageNet-X Annotation Form"
-/>
-
-</Content>
 
 <Content noteLeft="ImageNet-X can be used to surface mistake types for any ImageNet classifier" spaceBottom>
 
 ## Using ImageNet-X
 
-1. Git clone our repo
+1. Install imagenet-x package
 
 ```
-git clone url
+pip install imagenet-x
 ```
 
-2. Run plot.py
-3. [step]
+2. Load annotations
+```python
+from imagenet_x import load_annotations
 
-[add collab link]
+annots = load_annotations(partition="val")
+```
 
-Example [robustness by metaclass dashboard for ViT](/site/assets/ViT_dashboard.html)
-
-To evaluate mistake types for a new model, see below.
+See this [colab](https://colab.research.google.com/drive/1snegwqRKjqjwBEyq0-YY9_NOmTai8hT_?usp=sharing) for a step by step notebook loading annotations and evaluating new models.
 
 </Content>
 
@@ -94,19 +82,6 @@ Paper
 </Content>
 
 <Content spaceTop spaceBottom>
-
-
-## Using ImageNet-X for a new model
-
-See README on how to measure the mistake types on ImageNet
-
-When you are ready to go live, run this command in the terminal to create a production build.
-
-```
-pip install [something]
-```
-
-Take a look at the [**Release Checklist**](./release) section for deployment tips.
 
 </Content>
 

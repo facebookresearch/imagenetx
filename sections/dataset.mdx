@@ -7,7 +7,9 @@ order: 1
 
 # Download ImageNet-X Labels
 
-[url]
+<Button url="https://github.com/facebookresearch/imagenetx/" color="purple-800" small style={{marginRight: '5px'}}>
+Annotations
+</Button>  
 
 </Content>
 
@@ -18,7 +20,8 @@ order: 1
 We make it easy to explore the dataset. To get started 
 
 ```python
-table = read_annnotations()
+from imagenet_x import load_annotations
+table = load_annotations()
 ```
 
 ### Annotation Examples
@@ -33,7 +36,7 @@ table = read_annnotations()
 
 Measuring [robustness by metaclass](/site/assets/ViT_dashboard.html)
 
-</Content>
+</Content> 
 
 <Footer columns>
   <div>

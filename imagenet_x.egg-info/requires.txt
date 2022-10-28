@@ -1,0 +1,16 @@
+pandas
+scipy
+tqdm
+
+[:python_version < "3.9"]
+importlib_resources
+
+[all]
+matplotlib
+plotly
+tabulate
+seaborn
+scipy>=1.7.0
+jinja2
+torch
+torchvision

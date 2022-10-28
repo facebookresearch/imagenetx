@@ -88,7 +88,7 @@ Finally, we also provide a `ImagenetX` pytorch dataset that loads the imagenet s
 from imagenet_x.evaluate import ImageNetX, get_vanilla_transform
 
 # Declare dataset
-imagenet_val_path = '/datasets01/imagenet_full_size/061417/val/'
+imagenet_val_path = '/path/to/imagenet'
 transforms = get_vanilla_transform()
 dataset = ImageNetX(imagenet_val_path, transform=transforms)
 ```

@@ -1,3 +1,9 @@
+# ImagenetX : Understanding model mistakes with factors of variation annotations
+
+Code to load annotations, evaluate models and reproduce paper plots. See ***[[paper]()]***, ***[[website](fb.me/imagenetx)]***, ***[[colab]()]***
+
+![ImagenetX](assets/ImagenetX.png)
+
 ## Installation
 
 If you just want to load the annotations :
@@ -6,24 +12,10 @@ If you just want to load the annotations :
 pip install imagenet-x
 ```
 
-Or if you've cloned this repo 
-
-```bash
-pip install -e .
-```
-
-If you want to reproduce plots from the paper or use the plots subpackage
-
-```bash
-pip install imagenet-x[plot]
-```
-
-If you want to use the evaluate subpackage you will need a working installation of pytorch
-
-```bash
-pip install imagenet-x[evaluate]
-```
-
+Other installations:
+ - Install from repo clone : `pip install -e .` 
+ - Reproduce plots from the paper or use the plots subpackage : `pip install imagenet-x[plot]`
+ - If you want to use the evaluate subpackage `pip install imagenet-x[evaluate]`
 
 ## Usage
 
@@ -72,17 +64,7 @@ factor_accs = get_factor_accuracies("path/to/model/predictions")
 error_ratios = error_ratio(factor_accs)
 ```
 
-This gives the following tables
-
-#### Factor accuracies
-
-| model    |     pose |   background |   pattern |    color |   smaller |    shape |   partial_view |   subcategory |   texture |   larger |   darker |   object_blocking |   person_blocking |    style |   brighter |   multiple_objects |   worst_factor |   average |
-|:---------|---------:|-------------:|----------:|---------:|----------:|---------:|---------------:|--------------:|----------:|---------:|---------:|------------------:|------------------:|---------:|-----------:|-------------------:|---------------:|----------:|
-| DINO     | 0.821561 |     0.737577 |  0.772103 | 0.710569 |  0.62069  | 0.596465 |       0.722571 |      0.519658 |  0.471631 | 0.693333 | 0.639344 |          0.525641 |          0.5      | 0.581395 |   0.772727 |              0.65  |       0.471631 |  0.754283 |
-| ResNet50 | 0.824018 |     0.710799 |  0.804588 | 0.698862 |  0.62069  | 0.558174 |       0.713166 |      0.466667 |  0.393617 | 0.666667 | 0.565574 |          0.512821 |          0.45     | 0.511628 |   0.704545 |              0.5   |       0.393617 |  0.746693 |
-| SimCLR   | 0.739976 |     0.63494  |  0.693905 | 0.623902 |  0.482069 | 0.505155 |       0.659875 |      0.45641  |  0.308511 | 0.66     | 0.622951 |          0.410256 |          0.316667 | 0.604651 |   0.704545 |              0.6   |       0.308511 |  0.664064 |
-| ViT      | 0.827868 |     0.746458 |  0.799565 | 0.732358 |  0.617931 | 0.642121 |       0.786834 |      0.531624 |  0.524823 | 0.7      | 0.57377  |          0.538462 |          0.55     | 0.627907 |   0.818182 |              0.625 |       0.524823 |  0.767599 |
-
+This gives the following table
 #### Error ratios
 
 | model    |     pose |   background |   pattern |   color |   smaller |   shape |   partial_view |   subcategory |   texture |   larger |   darker |   object_blocking |   person_blocking |   style |   brighter |   multiple_objects |
@@ -121,14 +103,6 @@ See this [notebook](notebooks/evaluate_model.ipynb) to run the previous commands
 You need python>=3.8 for plots and evaluation to work
 
 ```bash
-pip install imagenet-x[all]
-python -m imagenet_x plots [--use-tex]
-```
-
-or if you cloned this repo
-
-```bash
-pip install -e .[all]
 python -m imagenet_x plots [--use-tex]
 ```
 

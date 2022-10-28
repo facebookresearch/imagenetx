@@ -1042,7 +1042,7 @@ def color_coded_latex_table(accuracies, fname):
     ]
     df.index.names = ["\\textbf{" + x + "}" for x in df.index.names]
     df.style.to_latex(
-        fname, hrules=True, column_format="llll", clines="skip-last;data"
+        fname, hrules=True, column_format="llll"
     )
 
 

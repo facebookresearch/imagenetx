@@ -1,6 +1,6 @@
 # ImagenetX : Understanding model mistakes with factors of variation annotations
 
-Code to load annotations, evaluate models and reproduce paper plots. See ***[[paper]()]***, ***[[website](fb.me/imagenetx)]***, ***[[colab]()]***
+Code to load annotations, evaluate models and reproduce paper plots. See ***[[paper]()]***, ***[[website](fb.me/imagenetx)]***, ***[[colab](https://colab.research.google.com/drive/1snegwqRKjqjwBEyq0-YY9_NOmTai8hT_?usp=sharing)]***
 
 ![ImagenetX](assets/ImagenetX.png)
 

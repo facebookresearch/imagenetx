@@ -33,7 +33,7 @@ except ImportError:
 from imagenet_x import load_annotations, FACTORS
 
 
-class ImageNetX(datasets.ImageFolder):
+class ImageNetXImageFolder(datasets.ImageFolder):
     """Loads ImageNetX annotations along with Imagenet validation samples"""
     
     def __init__(self, imagenet_path, *args, which_factor="top", partition="val", filter_prototypes=True, **kwargs):
@@ -47,6 +47,22 @@ class ImageNetX(datasets.ImageFolder):
         img_id = self.samples[index][0].split("/")[-1]
         img_annotations = self.annotations_.loc[img_id]
         return img, target, img_annotations[FACTORS].values.astype(np.bool)
+    
+class ImageNetX(datasets.ImageNet):
+    """Loads ImageNetX annotations along with Imagenet validation samples"""
+    
+    def __init__(self, imagenet_path, *args, which_factor="top", partition="val", filter_prototypes=True, **kwargs):
+        super().__init__(imagenet_path, split=partition, **kwargs)
+        self.annotations_ = load_annotations(which_factor=which_factor, partition=partition, filter_prototypes=filter_prototypes).set_index('file_name')
+        # Filter out unanotated samples
+        self.samples = [(path, label) for (path, label) in self.samples if path.split("/")[-1] in self.annotations_.index]
+
+    def __getitem__(self, index):
+        img, target = super().__getitem__(index)
+        img_id = self.samples[index][0].split("/")[-1]
+        img_annotations = self.annotations_.loc[img_id]
+        return img, target, img_annotations[FACTORS].values.astype(np.bool)
+
 
 def get_vanilla_transform():
     normalize = transforms.Normalize(

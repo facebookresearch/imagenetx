@@ -138,24 +138,41 @@ function Hero({ image , video , caption , color , textColor , overlay , style , 
 
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "react-icons/ri"
+var ri_ = __webpack_require__(8098);
 ;// CONCATENATED MODULE: ./components/Button.js
 
 const Button_Site = __webpack_require__(5272);
 
-function Button({ url , children , color , small , style  }) {
+
+function Button({ url , children , color , small , openNew , style  }) {
     const c = color || `${Button_Site.theme}-${Button_Site.shade + 100}`;
     const size = small ? "px-4 py-2 text-sm" : "px-6 py-4 text-md";
-    return /*#__PURE__*/ jsx_runtime_.jsx("span", {
+    const classes = `flex rounded-md no-underline items-center ${openNew ? 'gap-2' : ''} justify-center font-semibold text-white hover:text-${c} hover:shadow-md bg-${c} hover:bg-white ${size}`;
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
         className: "comp_button inline-block",
         style: style,
-        children: /*#__PURE__*/ jsx_runtime_.jsx(next_link["default"], {
-            href: url,
-            passHref: true,
-            children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                className: `flex rounded-md no-underline items-center justify-center font-semibold text-white hover:text-${c} hover:shadow-md bg-${c} hover:bg-white ${size}`,
-                children: children
+        children: [
+            !openNew && /*#__PURE__*/ jsx_runtime_.jsx(next_link["default"], {
+                href: url,
+                passHref: true,
+                children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                    className: classes,
+                    children: children
+                })
+            }),
+            openNew && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
+                href: url,
+                target: "_blank",
+                rel: "noopener",
+                className: classes,
+                children: [
+                    children,
+                    " ",
+                    /*#__PURE__*/ jsx_runtime_.jsx(ri_.RiArrowRightUpLine, {})
+                ]
             })
-        })
+        ]
     });
 };
 

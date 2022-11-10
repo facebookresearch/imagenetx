@@ -14,7 +14,7 @@ pip install imagenet-x
 
 Other installations:
  - Install from repo clone : `pip install -e .` 
- - Reproduce plots from the paper and use dataset loader: `pip install imagenet-x[all]`
+ - Reproduce plots from the paper and use dataset loader: `pip install 'imagenet-x[all]'`
 
 ## Usage
 

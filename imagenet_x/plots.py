@@ -928,7 +928,7 @@ def model_comparison(
                 xlabel.append((factor, c.get_label()))
                 if show_significance and not s:
                     bar.set_alpha(0.3)
-        comparison_df["Error ratio"] = comparison_df["Error ratio"] + 1
+        comparison_df["Error ratio"] = comparison_df["Error ratio"]
         y = (
             comparison_df.groupby(["Factor", hue])
             .mean()

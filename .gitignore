@@ -1,3 +1,6 @@
 dist/
 .DS_Store
 imagenet_x.egg-info/
+*.pyc
+build
+dist

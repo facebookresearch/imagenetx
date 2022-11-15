@@ -3,7 +3,7 @@
   "logo": "logo.svg",
   "description": "understanding model mistakes with human annotations of ImageNet",
   "showHomeLink": true,
-  "thumbnail": "assets/images/imagenetx_o_image.png",
+  "thumbnail": "/assets/images/imagenetx_o_image.png",
   "theme": "indigo",
   "shade": 800,
   "paper": "white",

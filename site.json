@@ -1,9 +1,9 @@
 {
   "title": "ImageNet-X",
   "logo": "logo.svg",
-  "description": "",
+  "description": "understanding model mistakes with human annotations of ImageNet",
   "showHomeLink": true,
-  "thumbnail": "/assets/thumbnail.png",
+  "thumbnail": "assets/images/imagenetx_o_image.png",
   "theme": "indigo",
   "shade": 800,
   "paper": "white",

@@ -43,7 +43,7 @@ MODEL_TYPE_ORDER = [
 ]
 
 
-def factor_distribution_comparison(annotations_to_compare, fname=None):
+def factor_distribution_comparison(annotations_to_compare, fname=None, remove_underscore=True):
     # sns.set(style="whitegrid")
     plt.figure(figsize=(8, 1.5))
 
@@ -76,7 +76,8 @@ def factor_distribution_comparison(annotations_to_compare, fname=None):
     g = sns.FacetGrid(
         all_distribs, col="group", sharex=False, sharey=False, height=2.5, aspect=0.9
     )
-    all_distribs.replace(r"_", " ", regex=True, inplace=True)
+    if remove_underscore:
+        all_distribs.replace(r"_", " ", regex=True, inplace=True)
     g.map_dataframe(
         sns.barplot,
         x="Factor",
@@ -116,7 +117,7 @@ def factor_distribution_comparison(annotations_to_compare, fname=None):
     plt.close()
 
 
-def active_factor_distribution_comparison(annotations_to_compare, fname=None):
+def active_factor_distribution_comparison(annotations_to_compare, fname=None, remove_underscore=True):
     # sns.set(style="whitegrid")
     plt.figure(figsize=(5, 2))
 
@@ -129,7 +130,8 @@ def active_factor_distribution_comparison(annotations_to_compare, fname=None):
         distrib["annotation"] = split
         all_distribs.append(distrib)
     all_distribs = pd.concat(all_distribs)
-    all_distribs.replace(r"_", " ", regex=True, inplace=True)
+    if remove_underscore:
+        all_distribs.replace(r"_", " ", regex=True, inplace=True)
     colors = ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"]
 
     g = sns.barplot(
@@ -323,8 +325,9 @@ def factor_scatterplot(
     hue=None,
     order=None,
     fname=None,
+    remove_underscore=True,
 ):
-    melted_accs, factor_order = melt_table(df, id_vars, var_name, value_name)
+    melted_accs, factor_order = melt_table(df, id_vars, var_name, value_name, remove_underscore=remove_underscore)
     melted_accs["Error ratio"] = (1 - melted_accs[value_name]) / (1 - melted_accs[x])
     melted_accs = melted_accs.dropna()
 
@@ -387,7 +390,7 @@ def factor_scatterplot(
     plt.close()
 
 
-def melt_table(df, id_vars, var_name, value_name):
+def melt_table(df, id_vars, var_name, value_name, remove_underscore=True):
     melted_accs = df.reset_index().melt(
         id_vars=id_vars,
         var_name=var_name,
@@ -400,7 +403,8 @@ def melt_table(df, id_vars, var_name, value_name):
         .reset_index()
         .set_index("model")
     )
-    melted_accs.replace(r"_", " ", regex=True, inplace=True)
+    if remove_underscore:
+        melted_accs.replace(r"_", " ", regex=True, inplace=True)
     return melted_accs, factor_order
 
 
@@ -449,7 +453,7 @@ def augmentation_effect(df, augmentation, measure):
 
 
 def augmentation_effect_scatter_plot_reduced(
-    all_accuracies, all_hparams, augmentation_strengths, fname, y_title="Error ratio"
+    all_accuracies, all_hparams, augmentation_strengths, fname, y_title="Error ratio", remove_underscore=True,
 ):
     colors = ["#2a9d8f", "#f4a261"]
     height = 2.2
@@ -472,6 +476,7 @@ def augmentation_effect_scatter_plot_reduced(
             ["model", "average", "worst_factor", "worst_100_classes"] + hparams,
             "Factor",
             y_title,
+            remove_underscore=remove_underscore,
         )
         melted_accs[y_title] = (1 - melted_accs[y_title]) / (1 - melted_accs["average"])
 
@@ -888,6 +893,7 @@ def model_comparison(
     hue_order=None,
     show_significance=False,
     compact=False,
+    remove_underscore=True
 ):
     if hue_order is not None:
         comparison_df = comparison_df[comparison_df[hue].isin(hue_order)]
@@ -897,7 +903,8 @@ def model_comparison(
     comparison_df["Error ratio"] = (1 - comparison_df["Accuracy"]) / (
         1 - comparison_df[average_name]
     )
-    comparison_df.replace(r"_", " ", regex=True, inplace=True)
+    if remove_underscore:
+        comparison_df.replace(r"_", " ", regex=True, inplace=True)
     comparison_df = comparison_df.sort_values(by=value)
     factor_order = (
         comparison_df.groupby("Factor")["Error ratio"].mean().sort_values().index.values
@@ -1047,7 +1054,7 @@ def color_coded_latex_table(accuracies, fname):
 
 
 def specific_model_metaclasses(
-    accuracies_default_models, accuracies_default_models_metaclass, fname
+    accuracies_default_models, accuracies_default_models_metaclass, fname, remove_underscore=True
 ):
     accuracies_vit_metaclass = accuracies_default_models_metaclass[
         accuracies_default_models_metaclass.model == "ViT"
@@ -1092,7 +1099,8 @@ def specific_model_metaclasses(
     overall_vit["Error ratio"] = (1 - overall_vit["Accuracy"]) / (
         1 - overall_vit["average"]
     )
-    overall_vit.replace(r"_", " ", regex=True, inplace=True)
+    if remove_underscore:
+        overall_vit.replace(r"_", " ", regex=True, inplace=True)
     overall_vit = overall_vit.sort_values("Error ratio")
     overall_vit = pd.concat([overall_vit.head(3), overall_vit.tail(3)])
     axs[4].barh(

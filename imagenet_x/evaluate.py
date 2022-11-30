@@ -15,8 +15,7 @@ except ImportError:
     raise ImportError("Please install pytorch and torchvision to use this module.")
 
 from distutils.log import warn
-from imagenet_x.utils import files
-import imagenet_x.annotations
+from imagenet_x.utils import get_annotation_path
 
 import numpy as np
 import pandas as pd
@@ -79,7 +78,7 @@ def get_vanilla_transform():
 
 def format_dataset_entry(inp):
     img, label, factors = inp
-    imagenet_classes = pd.read_csv((files(imagenet_x.annotations) / 'imagenet_labels.txt'), names=['class', 'name']).name.to_list()
+    imagenet_classes = pd.read_csv((get_annotation_path() / 'imagenet_labels.txt'), names=['class', 'name']).name.to_list()
     label = imagenet_classes[label]
     factor = FACTORS[np.nonzero(factors)[0][0]]
     return dict(Class=label, Factor=factor, image=img)

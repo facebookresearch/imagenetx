@@ -102,9 +102,11 @@ def softmax(x, axis=None):
     exp_x_shifted = np.exp(x - x_max)
     return exp_x_shifted / np.sum(exp_x_shifted, axis=axis, keepdims=True)
 
+def get_annotation_path():
+    return files("imagenet_x") / "annotations" 
 
 def load_model_predictions(models_dir: str, verbose=False):
-    filename_label = pd.read_csv(files(imagenet_x.annotations) / "filename_label.csv")
+    filename_label = pd.read_csv(get_annotation_path() / "filename_label.csv")
     paths, labels = (
         filename_label.file_name,
         filename_label.set_index("file_name").label,
@@ -161,7 +163,7 @@ def load_annotations(
         The annotations for the given partition and factor selection
     """
     imagenet_x_type = f"imagenet_x_{partition}_{which_factor}_factor.jsonl"
-    annot_file = files(imagenet_x.annotations)
+    annot_file = get_annotation_path()
     imagenet_x_json = annot_file / imagenet_x_type
     metaclass_mapping = annot_file / f"imagenet_1k_classes_to_100_metaclasses.csv"
     prototypes = annot_file / f"prototypical_paths.csv"
@@ -176,9 +178,9 @@ def load_annotations(
 def augment_model_predictions(
     annotations, models, add_human_performance=False, verbose=False
 ):
-    path_to_real_labels = files(imagenet_x.annotations) / "imagenet_real_labels.jsonl"
+    path_to_real_labels = get_annotation_path() / "imagenet_real_labels.jsonl"
     path_to_metaclass_mapping = (
-        files(imagenet_x.annotations) / "imagenet_1k_classes_to_100_metaclasses.csv"
+        get_annotation_path() / "imagenet_1k_classes_to_100_metaclasses.csv"
     )
 
     if add_human_performance:
